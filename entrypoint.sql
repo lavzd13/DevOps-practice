@@ -1,0 +1,1 @@
+CREATE TABLE notes ( notes_id SERIAL PRIMARY KEY, text TEXT, created_at timestamp DEFAULT CURRENT_TIMESTAMP);
