@@ -11,9 +11,7 @@ services:
       - "traefik.http.routers.portfolio.rule=Host(`devops-api.l0mke.com`)"
       - "traefik.http.routers.portfolio.entrypoints=websecure"
       - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
-    ports:
-      - 8000:8000
+      - "traefik.http.services.portfolio.loadbalancer.server.port=8000"
     env_file:
       - .env
     networks:
