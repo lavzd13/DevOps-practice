@@ -8,14 +8,15 @@ services:
         condition: service_healthy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`devops-api.l0mke.com`)"
-      - "traefik.http.routers.portfolio.entrypoints=websecure"
-      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=8000"
+      - "traefik.http.routers.devops-practice.rule=Host(`devops-api.l0mke.com`)"
+      - "traefik.http.routers.devops-practice.entrypoints=websecure"
+      - "traefik.http.routers.devops-practice.tls.certresolver=letsencrypt"
+      - "traefik.http.services.devops-practice.loadbalancer.server.port=8000"
     env_file:
       - .env
     networks:
       - app_network
+      - web
 
   db:
     image: postgres:16
