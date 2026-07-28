@@ -6,6 +6,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`devops-api.l0mke.com`)"
+      - "traefik.http.routers.portfolio.entrypoints=websecure"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
     ports:
       - 8000:8000
     env_file:
@@ -34,3 +40,5 @@ volumes:
 
 networks:
   app_network:
+  web:
+    external: true
